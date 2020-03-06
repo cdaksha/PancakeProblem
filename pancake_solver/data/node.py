@@ -43,7 +43,8 @@ class PancakeNode:
 
     def __str__(self):
         pancakes = self.parent.pancakes[0:self.flip_index] + '|' + self.parent.pancakes[self.flip_index:]
-        return pancakes + ' g={}, h={}'.format(self.cumulative_backward_cost, self.forward_cost())
+        return pancakes + ' g={}, h={}'.format(self.parent.cumulative_backward_cost,
+                                               self.parent.forward_cost())
 
     def __repr__(self):
         return "PancakeNode(pancakes='{}', parent='{}', flip_index={})" \

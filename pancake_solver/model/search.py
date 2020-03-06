@@ -28,7 +28,9 @@ def depth_first_search(initial_state: str):
         current_state = fringe.pop()
         visited.append(current_state)
         if current_state == goal_state:
-            print("Final State: {}".format(current_state.pancakes))
+            print("Final State: {} g={}, h={}".format(current_state.pancakes,
+                                                      current_state.cumulative_backward_cost,
+                                                      current_state.forward_cost()))
             return current_state.pancakes
         else:
             children = [state for state in s.get_states(current_state) if state not in visited]
@@ -53,7 +55,9 @@ def a_star_search(initial_state: str):
         current_state = fringe.get()
         visited.append(current_state.uninformed_state)
         if current_state.uninformed_state == goal_state:
-            print("Final State: {}".format(current_state.uninformed_state.pancakes))
+            print("Final State: {} g={}, h={}".format(current_state.uninformed_state.pancakes,
+                                                      current_state.uninformed_state.cumulative_backward_cost,
+                                                      current_state.uninformed_state.forward_cost()))
             return current_state.uninformed_state.pancakes
         else:
             for state in s.get_states(current_state.uninformed_state):
